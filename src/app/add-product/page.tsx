@@ -56,7 +56,7 @@ import { redirect } from "next/navigation";
                 type="number"
                 className="input-bordered  input mb-3 w-full"
             />
-            <FormSubmitButton className="btn btn-primary btn-block" type="submit">Add Product</FormSubmitButton>
+            <FormSubmitButton className="btn-block" >ADD PRODUCT</FormSubmitButton>
         </form>
        </div>
     )

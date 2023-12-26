@@ -2,6 +2,8 @@
 
 //belirli bir bileşen için props türlerini almak için kullanılır.
 import React, { ComponentProps } from "react";
+import {useFormStatus } from "react-dom";
+//import { useState } from "react";
 
 //children ve className olmak üzere iki özellik ve ComponentProps türüyle birleştirilerek tanımlanır.
 type FormSubmitButtonProps = {
@@ -14,9 +16,16 @@ export default function FormSubmitButton(
     //Bu bileşen, children ve className adlı iki parametre alır
     {children,className} : FormSubmitButtonProps //bunların türünü FormSubmitButtonProps olarak belirtir
 ){
+   const {pending} = useFormStatus();
     return (
         //bileşenin dönüş değeri olarak, children değerini içeren bir düğme öğesi döndürülür.
-        <button> {children} </button>
+        <button 
+        className={`btn btn-primary ${className}`} 
+        type="submit"
+        disabled= {pending}
+        >
+            {pending && <span className="loading load-spinner"/>}
+            {children}</button>
     )
 }
 
