@@ -14,12 +14,13 @@ type FormSubmitButtonProps = {
 //FormSubmitButton adlı bir fonksiyonel bileşen tanımlar
 export default function FormSubmitButton(
     //Bu bileşen, children ve className adlı iki parametre alır
-    {children,className} : FormSubmitButtonProps //bunların türünü FormSubmitButtonProps olarak belirtir
+    {children,className, ...props} : FormSubmitButtonProps //bunların türünü FormSubmitButtonProps olarak belirtir
 ){
    const {pending} = useFormStatus();
     return (
         //bileşenin dönüş değeri olarak, children değerini içeren bir düğme öğesi döndürülür.
         <button 
+        {...props}
         className={`btn btn-primary ${className}`} 
         type="submit"
         disabled= {pending}
