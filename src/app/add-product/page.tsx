@@ -25,9 +25,16 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
     if(!name || !description || !imageUrl || !price){
         throw Error("Missing required fields");
     }
-    await prisma.product.create({
-        data: { name, description, imageUrl, price }
-    });
+
+        //pagination
+        for(let i=0 ; i<50; i++) {
+            await prisma.product.create({
+                data: { name, description, imageUrl, price }
+            });
+        }
+
+
+   
     redirect("/");
  }
 
