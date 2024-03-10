@@ -8,8 +8,8 @@ I made an e commerce site with user authentication using nextjs and mongoDB.Ther
 - Prisma
 - DaisyUI
 
->
-![Ekran görüntüsü 2024-03-11 004213](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/3caf32eb-4c81-43d7-ba78-2e36bb9ed821)
+
+>![Ekran görüntüsü 2024-03-11 004213](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/3caf32eb-4c81-43d7-ba78-2e36bb9ed821)
 ![Ekran görüntüsü 2024-03-11 004233](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/9deec486-7e9d-4585-8b79-1555590903fa)
 ![Ekran görüntüsü 2024-03-11 004251](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/258dd5c1-6a6b-4a25-9dcc-c3f685ecdd79)
 ![Ekran görüntüsü 2024-03-11 004303](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/3b0123fb-1c5d-4999-967d-42e77ddbe197)
