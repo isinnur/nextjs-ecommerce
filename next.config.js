@@ -1,12 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        remotePatterns: [{hostname: "images.unsplash.com"}, {hostname: "lh3.googleusercontent.com"}],
+      remotePatterns: [
+        { hostname: "images.unsplash.com" },
+        { hostname: "lh3.googleusercontent.com" },
+      ],
     },
-    // Bu özellik, sunucu taraflı işlemleri gerçekleştirmek için kullanılır.
     experimental: {
-        serverActions: true,
+      serverActions: true,
     },
-};
-
-module.exports = nextConfig
+  };
+  
+  module.exports = nextConfig;
