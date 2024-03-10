@@ -1,34 +1,39 @@
-import { mergeAnonymousCartIntoUserCart } from "@/lib/db/cart";
+"use server";
+
+import { createCart, getCart } from "@/lib/db/cart";
 import { prisma } from "@/lib/db/prisma";
-import { env } from "@/lib/env";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-import { NextAuthOptions } from "next-auth";
-import { Adapter } from "next-auth/adapters";
-import NextAuth from "next-auth/next";
-import GoogleProvider from "next-auth/providers/google";
+import { revalidatePath } from "next/cache";
 
-export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma as PrismaClient) as Adapter,
-  providers: [
-    GoogleProvider({
-      clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET,
-    }),
-  ],
-  callbacks: {
-    session({ session, user }) {
-      session.user.id = user.id;
-      return session;
-    },
-  },
-  events: {
-    async signIn({ user }) {
-      await mergeAnonymousCartIntoUserCart(user.id);
-    },
-  },
-};
+export async function incrementProductQuantity(productId: string) {
+  const cart = (await getCart()) ?? (await createCart());
 
-const handler = NextAuth(authOptions);
+  const articleInCart = cart.items.find((item) => item.productId === productId);
 
-export default handler;
+  if (articleInCart) {
+    await prisma.cart.update({
+      where: { id: cart.id },
+      data: {
+        items: {
+          update: {
+            where: { id: articleInCart.id },
+            data: { quantity: { increment: 1 } },
+          },
+        },
+      },
+    });
+  } else {
+    await prisma.cart.update({
+      where: { id: cart.id },
+      data: {
+        items: {
+          create: {
+            productId,
+            quantity: 1,
+          },
+        },
+      },
+    });
+  }
+
+  revalidatePath("/products/[id]");
+}
