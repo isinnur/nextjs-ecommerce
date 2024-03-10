@@ -1,8 +1,17 @@
 import ProductCard from "@/components/ProductCard"
 import { prisma } from "@/lib/db/prisma"
+import { Metadata } from "next"
+
 interface SearchPageProps {
     searchParams: {query:string}
 }
+
+export function generateMetadata ({searchParams: {query}, } : SearchPageProps) : Metadata {
+    return {
+        title: `Search: ${query} - Flowmazon`
+    }
+}
+
 export default async function SearchPage({searchParams : {query}} : SearchPageProps) {
     const products = await prisma.product.findMany({
         where: {
