@@ -1,5 +1,3 @@
-// src/app/api/auth/[...nextauth]/route.ts
-
 import { mergeAnonymousCartIntoUserCart } from "@/lib/db/cart";
 import { prisma } from "@/lib/db/prisma";
 import { env } from "@/lib/env";
@@ -10,10 +8,8 @@ import { Adapter } from "next-auth/adapters";
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 
-const prismaClient = new PrismaClient();
-
-const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prismaClient) as Adapter,
+export const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(prisma as PrismaClient) as Adapter,
   providers: [
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
@@ -35,4 +31,4 @@ const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions);
 
-export default handler;
+export { handler as GET, handler as POST };
