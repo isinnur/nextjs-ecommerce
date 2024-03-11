@@ -17,6 +17,7 @@ I made an e commerce site with user authentication using nextjs and mongoDB.Ther
 ![Ekran görüntüsü 2024-03-11 004730](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/34bcf2b5-6a94-493e-8c82-8dfb3f8ab915)
 ![Ekran görüntüsü 2024-03-11 004743](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/9c718f32-144c-4772-9d8a-b2f1eb752d09)
 ![Ekran görüntüsü 2024-03-11 004814](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/42ac6ff5-a536-4bab-aee1-36383ad86803)
+![image](https://github.com/isinnur/nextjs-ecommerce/assets/98089962/1cb008d1-b2b7-454b-bf17-bd333aaebfcb)
 
 
 
